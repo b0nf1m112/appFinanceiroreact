@@ -5,6 +5,7 @@ import { createStaticNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from './views/Home';
+import Cotas from './components/Cotas'; 
 import Dolar from './views/Dolar';
 import mongagua from './views/mongagua';
 import peruibe from './views/peruibe';
