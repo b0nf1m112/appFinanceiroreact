@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Image, ScrollView} from 'react-native';
 
 export default function Financiamento() {
   const [valorBem, setValorBem] = useState('');
@@ -8,50 +8,53 @@ export default function Financiamento() {
   const [parcela, setParcela] = useState<number | null>(null);
 
   const calcularParcela = () => {
-    const V = parseFloat(valorBem);
-    const n = parseInt(parcelas);
-    const taxa = parseFloat(taxaAno);
+  const V = parseFloat(valorBem);
+  const n = parseInt(parcelas);
+  const taxa = parseFloat(taxaAno);
 
-    const i = Math.pow(1 + taxa / 100, 1 / 12) - 1;
-    const p = V * (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
+  const i = Math.pow(1 + taxa / 100, 1 / 12) - 1;
+  const p = V * (i * Math.pow(1 + i, n)) / (Math.pow(1 + i, n) - 1);
 
     setParcela(p);
-  };
+     }; 
 
-  return (
-    <View style={styles.container}>
-      <Text style={styles.titulo}>Simulador de Financiamento</Text>
+ return (
+   <ScrollView contentContainerStyle={styles.container}>
+   <Image source={require('../assets/logo_finac.png')} style={styles.logo} />
+   <Text style={styles.titulo}>Simulador de Financiamento</Text>
 
-      <TextInput
+
+
+    <TextInput
         style={styles.input}
         placeholder="Valor do Bem"
         keyboardType="numeric"
         value={valorBem}
         onChangeText={setValorBem}
-      />
-      <TextInput
+    />
+    <TextInput
         style={styles.input}
         placeholder="Número de Parcelas"
         keyboardType="numeric"
         value={parcelas}
         onChangeText={setParcelas}
-      />
+    />
       <TextInput
         style={styles.input}
         placeholder="Taxa ao ano (%)"
         keyboardType="numeric"
         value={taxaAno}
         onChangeText={setTaxaAno}
-      />
+    />
 
-      <Button title="Calcular Parcela" onPress={calcularParcela} />
+    <Button title="Calcular Parcela" onPress={calcularParcela} />
 
       {parcela !== null && (
         <Text style={styles.resultado}>
           Parcela Mensal: R$ {parcela.toFixed(2)}
         </Text>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
@@ -65,6 +68,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     padding: 10,
     marginBottom: 15,
-  },
-  resultado: { fontSize: 20, marginTop: 20 },
+    },
+    resultado: { fontSize: 20, marginTop: 20 },
+    logo: { width: 120, height: 120, marginBottom: 20 },
+
 });

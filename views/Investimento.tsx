@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, Button, StyleSheet, Image, ScrollView } from 'react-native';
 
 export default function Investimento() {
   const [valorInicial, setValorInicial] = useState('');
@@ -24,8 +24,9 @@ export default function Investimento() {
     setResultado(montante);
   };
 
-  return (
-    <View style={styles.container}>
+    return (
+      <ScrollView contentContainerStyle={styles.container}>
+      <Image source={require('../assets/logo_invest.png')} style={styles.logo} />
       <Text style={styles.titulo}>Simulador de Investimento</Text>
 
       <TextInput
@@ -64,7 +65,7 @@ export default function Investimento() {
           Montante Final: R$ {resultado.toFixed(2)}
         </Text>
       )}
-    </View>
+    </ScrollView>
   );
 }
 
@@ -79,5 +80,7 @@ const styles = StyleSheet.create({
     padding: 10,
     marginBottom: 15,
   },
-  resultado: { fontSize: 20, marginTop: 20 },
+    resultado: { fontSize: 20, marginTop: 20 },
+    logo: { width: 120, height: 120, marginBottom: 20 },
+
 });

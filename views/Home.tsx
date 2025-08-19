@@ -6,7 +6,7 @@ export default function Home({navigation}: any) {
    
     return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Image source={require('../assets/logo.png')} style={styles.logo} />
+      <Image source={require('../assets/logo_home.png')} style={styles.logo} />
       <Text style={styles.titulo}>App Financeiro</Text>
       <Text style={styles.boasVindas}>Seja bem-vindo!</Text>
 
