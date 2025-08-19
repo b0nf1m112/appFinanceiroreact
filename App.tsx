@@ -1,29 +1,36 @@
 // In App.js in a new project
 
 import * as React from 'react';
-import { createStaticNavigation } from '@react-navigation/native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 import Home from './views/Home';
-import Cotas from './components/Cotas'; 
 import Dolar from './views/Dolar';
-import mongagua from './views/mongagua';
-import peruibe from './views/peruibe';
-import praiagrande from './views/praiagrande';
+import Euro from './views/Euro';
+import Investimento from './views/Investimento';
+import Financiamento from './views/Financiamento';
 
+export type RootStackParamList = {
+  Home: undefined;
+  Dolar: undefined;
+  Euro: undefined;
+  Investimento: undefined;
+  Financiamento: undefined;
+};
 
-const RootStack = createNativeStackNavigator({
-  screens: {
-    Home: Home,
-    Dolar:Dolar,
-    mongagua:mongagua,
-    peruibe:peruibe,
-    praiagrande:praiagrande
-  },
-});
-
-const Navigation = createStaticNavigation(RootStack);
+const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
-  return <Navigation />;
+  return (
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={Home} />
+        <Stack.Screen name="Dolar" component={Dolar} />
+        <Stack.Screen name="Euro" component={Euro} />
+        <Stack.Screen name="Investimento" component={Investimento} />
+        <Stack.Screen name="Financiamento" component={Financiamento} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
 }
+

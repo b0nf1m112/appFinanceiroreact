@@ -1,68 +1,47 @@
-import {View, Text, TouchableOpacity, StyleSheet} from 'react-native';
+import React from 'react';
+import { View, Text, StyleSheet, Image, TouchableOpacity, ScrollView } from 'react-native';
+import Cotas from '../components/Cotas';
 
-import {
-    createStaticNavigation,
-    useNavigation,
-  } from '@react-navigation/native';
-  import { createNativeStackNavigator } from '@react-navigation/native-stack';
+export default function Home({navigation}: any) {
+   
+    return (
+    <ScrollView contentContainerStyle={styles.container}>
+      <Image source={require('../assets/logo.png')} style={styles.logo} />
+      <Text style={styles.titulo}>App Financeiro</Text>
+      <Text style={styles.boasVindas}>Seja bem-vindo!</Text>
 
-export default function Home(){
-    const navigation = useNavigation();
-    return(
-        <View style={styles.bloco}>
-                <Text style={styles.Texto}>Seja bem Vindo</Text>
+      {/* Exibir e inserir uma ou mais moedas */}
+      <Cotas moedaNome="USD" icone={require('../assets/usd.png')} />
+      <Cotas moedaNome="EUR" icone={require('../assets/eur.png')} />
 
-                <TouchableOpacity 
-                    style={styles.btn}
-                    onPress={()=>navigation.navigate('Dolar' as never)}
-                >
-                    <Text style={styles.textoBtn}>Dolar</Text>
-                </TouchableOpacity>
+      <TouchableOpacity
+        style={styles.botao}
+        onPress={() => navigation.navigate('Investimento')}
+      >
+        <Text style={styles.textoBotao}>Investimento</Text>
+      </TouchableOpacity>
 
-                <TouchableOpacity 
-                    style={styles.btn}
-                    onPress={()=>navigation.navigate('mongagua' as never)}
-                >
-                    <Text style={styles.textoBtn}>mongagua</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity 
-                    style={styles.btn}
-                    onPress={()=>navigation.navigate('peruibe' as never)}
-                >
-                    <Text style={styles.textoBtn}>peruibe</Text>
-                </TouchableOpacity>
-
-                <TouchableOpacity 
-                    style={styles.btn}
-                    onPress={()=>navigation.navigate('praiagrande' as never)}
-                >
-                    <Text style={styles.textoBtn}>praiagrande</Text>
-                </TouchableOpacity>
-        </View>
-    );
-} 
+      <TouchableOpacity
+        style={styles.botao}
+        onPress={() => navigation.navigate('Financiamento')}
+      >
+        <Text style={styles.textoBotao}>Financiamento</Text>
+      </TouchableOpacity>
+    </ScrollView>
+  );
+}
 
 const styles = StyleSheet.create({
-    bloco:{
-        flex:1,
-        alignItems:'center',
-        justifyContent:'center'
-    },
-    Texto:{
-        fontSize:30
-    },
-    btn:{
-       backgroundColor:"#5599AA",
-       width:'80%',
-       padding:10,
-       marginBottom:20,
-       marginTop: 20,
-       borderRadius:20
-    },
-    textoBtn:{
-        color:"#FFF",
-        fontSize:30,
-        textAlign:'center'
-    }
+  container: { flexGrow: 1, alignItems: 'center', paddingVertical: 40 },
+  logo: { width: 140, height: 140, marginBottom: 20 },
+  titulo: { fontSize: 28, fontWeight: 'bold', marginBottom: 10 },
+  boasVindas: { fontSize: 20, marginBottom: 20 },
+  botao: {
+    backgroundColor: '#5b9eafff',
+    padding: 15,
+    marginBottom: 20,
+    width: '70%',
+    borderRadius: 15,
+  },
+  textoBotao: { color: '#ffffffff', fontSize: 20, textAlign: 'center' },
 });
