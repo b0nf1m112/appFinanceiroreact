@@ -11,8 +11,8 @@ export default function Home({navigation}: any) {
       <Text style={styles.boasVindas}>Seja bem-vindo!</Text>
 
       {/* Exibir e inserir uma ou mais moedas */}
-      <Cotas moedaNome="USD" icone={require('../assets/usd.png')} />
-      <Cotas moedaNome="EUR" icone={require('../assets/eur.png')} />
+      <Cotas moedaNome="USD" icone={require('../assets/dolar.jpg')} />
+      <Cotas moedaNome="EUR" icone={require('../assets/euro.png')} />
 
       <TouchableOpacity
         style={styles.botao}
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
   titulo: { fontSize: 28, fontWeight: 'bold', marginBottom: 10 },
   boasVindas: { fontSize: 20, marginBottom: 20 },
   botao: {
-    backgroundColor: '#5b9eafff',
+    backgroundColor: '#ffffffff',
     padding: 15,
     marginBottom: 20,
     width: '70%',

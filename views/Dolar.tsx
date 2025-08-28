@@ -14,7 +14,7 @@
 
     async function buscaCotas() {
     try {
-      const response = await Api.get('finance?key=a4dfe232');
+      const response = await Api.get('finance?key=12b2bb19');
       const dados = response.data.results;
       setDolar(dados.currencies.USD);
     } catch (error) {

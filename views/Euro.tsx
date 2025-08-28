@@ -13,7 +13,7 @@ export default function Euro(){
 
   async function buscaCotacoes() {
     try {
-      const response = await Api.get('finance?key=a4dfe232'); 
+      const response = await Api.get('finance?key=12b2bb19'); 
       const dados = response.data.results;
 
       const euroDados = dados.currencies.EUR;
